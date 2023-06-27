@@ -5,7 +5,7 @@ import pickle
 import pandas as pd
 import streamlit as st 
 
-model = pickle.load(open("flight_rf.pkl", "rb"))
+model = pickle.load(open("flight.pkl", "rb"))
 
 
 
@@ -47,7 +47,7 @@ def main():
 
         # Airline
         # AIR ASIA = 0 (not in column)
-    airline=st.select_box('airline',('Jet_Airways','IndiGo','Air_India','Multiple_carriers',
+    airline=st.selectbox('airline',('Jet_Airways','IndiGo','Air_India','Multiple_carriers',
                                      'SpiceJet','Vistara','GoAir','Multiple_carriers_Premium_economy',
                                      'Jet_Airways_Business','Vistara_Premium_economy','Trujet'))
     if(airline=='Jet Airways'):
@@ -207,7 +207,7 @@ def main():
             Trujet = 0
 
        
-    Source = st.select_box("Source",('Delhi','Kolkata','Mumbai','Chennai'))
+    Source = st.selectbox("Source",('Delhi','Kolkata','Mumbai','Chennai'))
     if (Source == 'Delhi'):
             s_Delhi = 1
             s_Kolkata = 0
@@ -244,7 +244,7 @@ def main():
         #     s_Chennai)
 
         
-    Source = st.select_box("Destination",('Cochin','Delhi', 'New_Delhi','Hyderabad','Kolkata'))
+    Source = st.selectbox("Destination",('Cochin','Delhi', 'New_Delhi','Hyderabad','Kolkata'))
     if (Source == 'Cochin'):
             d_Cochin = 1
             d_Delhi = 0
@@ -319,10 +319,11 @@ def main():
             d_Kolkata,
             d_New_Delhi
         ]])
+    result=""
 
     if st.button("Predict"):
-        result=round(prediction[0],2)
-    st.success('The output is {}'.format(result))
+            result=round(prediction[0],2)
+    st.success('The FARE is {}'.format(result))
 
 
     
