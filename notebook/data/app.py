@@ -5,7 +5,7 @@ import pickle
 import pandas as pd
 import streamlit as st 
 
-model = pickle.load(open("flight.pkl", "rb"))
+model = pickle.load(open("flight_price.pkl", "rb"))
 
 
 
